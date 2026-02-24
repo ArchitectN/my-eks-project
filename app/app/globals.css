@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sage-gradient: linear-gradient(135deg, #568556 0%, #7aa47a 100%);
+  --cream-bg: #fdfbf7;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cream-bg);
+  font-family: 'DM Sans', sans-serif;
+  color: #2c432c;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-3xl border border-sage-100 transition-all duration-300;
+    box-shadow: var(--card-shadow);
+  }
+
+  .card:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .btn-primary {
+    @apply bg-sage-600 text-white font-body font-medium rounded-2xl px-6 py-3 
+           transition-all duration-200 hover:bg-sage-700 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-cream-100 text-sage-700 font-body font-medium rounded-2xl px-6 py-3
+           border border-cream-300 transition-all duration-200 hover:bg-cream-200 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply bg-clay-100 text-clay-500 font-body font-medium rounded-2xl px-6 py-3
+           border border-clay-200 transition-all duration-200 hover:bg-clay-200 active:scale-95;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-2xl border border-sage-200 bg-white
+           font-body text-sage-900 placeholder-sage-300
+           focus:outline-none focus:ring-2 focus:ring-sage-400 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-sage-700 mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-green {
+    @apply badge bg-sage-100 text-sage-700;
+  }
+
+  .badge-clay {
+    @apply badge bg-clay-100 text-clay-500;
+  }
+
+  .badge-cream {
+    @apply badge bg-cream-200 text-cream-500;
+  }
+
+  .page-title {
+    @apply font-display text-3xl font-bold text-sage-900;
+  }
+
+  .section-title {
+    @apply font-display text-xl font-semibold text-sage-800;
+  }
+}
+
+/* DayPicker custom styles */
+.rdp {
+  --rdp-cell-size: 42px;
+  --rdp-accent-color: #568556;
+  --rdp-background-color: #e6ede6;
+  --rdp-accent-color-dark: #415341;
+  --rdp-outline: 2px solid var(--rdp-accent-color);
+  --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.rdp-month {
+  width: 100%;
+}
+
+.rdp-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.rdp-day_selected, .rdp-day_selected:focus-visible, .rdp-day_selected:hover {
+  background-color: #568556;
+  color: white;
+  border-radius: 12px;
+}
+
+.rdp-day:hover:not(.rdp-day_selected):not(.rdp-day_disabled) {
+  background-color: #e6ede6;
+  border-radius: 12px;
+}
+
+.rdp-day_disabled {
+  opacity: 0.3;
+}
+
+.rdp-head_cell {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #568556;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #a8c4a8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7aa47a; }
