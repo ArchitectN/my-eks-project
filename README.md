@@ -120,12 +120,12 @@ Supabase provides the hosted Postgres database, authentication, and auto-generat
 1. Create a project at [supabase.com](https://supabase.com)
 2. Run `app/animal-daycare/supabase/schema.sql` in the SQL editor
 3. Go to **Authentication → Providers → Email** and disable "Confirm email" for local dev
-4. Copy your **Project URL** and **Publishable/Anon key** from **Settings → API**
+4. Copy your **Project URL** and **Publishable** from **Settings → API**
 
 **Environment variables** (`app/animal-daycare/.env.local`):
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your-anon-key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your-default-key
 ```
 
 > ⚠️ `.env.local` is gitignored and never committed. For production, values are injected as Kubernetes Secrets.
@@ -293,7 +293,7 @@ GitHub Actions runs the CI pipeline on every push to `main`, then hands off to A
 | `AWS_ACCESS_KEY_ID` | AWS credentials for ECR push |
 | `AWS_SECRET_ACCESS_KEY` | AWS credentials for ECR push |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | Supabase anon key |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | Supabase default key |
 
 ---
 
