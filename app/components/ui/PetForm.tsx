@@ -18,6 +18,7 @@ export default function PetForm({ pet, userId }: { pet?: Pet; userId: string }) 
   const [form, setForm] = useState({
     name: pet?.name ?? "",
     species: pet?.species ?? "dog",
+    otherSpecies: "",
     breed: pet?.breed ?? "",
     age: pet?.age?.toString() ?? "",
     weight_lbs: pet?.weight_lbs?.toString() ?? "",
@@ -39,7 +40,7 @@ export default function PetForm({ pet, userId }: { pet?: Pet; userId: string }) 
     const payload = {
       name: form.name,
       species: form.species as Pet["species"],
-      breed: form.breed || null,
+      breed: form.species === "other" ? (form.otherSpecies || null) : (form.breed || null),
       age: form.age ? parseInt(form.age) : null,
       weight_lbs: form.weight_lbs ? parseFloat(form.weight_lbs) : null,
       notes: form.notes || null,
@@ -93,6 +94,21 @@ export default function PetForm({ pet, userId }: { pet?: Pet; userId: string }) 
           ))}
         </div>
       </div>
+
+      {/* Other species text input */}
+      {form.species === "other" && (
+        <div className="animate-fade-up">
+          <label className="label">What kind of animal? *</label>
+          <input
+            name="otherSpecies"
+            value={form.otherSpecies}
+            onChange={handleChange}
+            className="input"
+            placeholder="e.g. Hamster, Turtle, Snake, Guinea pig..."
+            required
+          />
+        </div>
+      )}
 
       <div className="grid grid-cols-2 gap-5">
         <div className="col-span-2">
