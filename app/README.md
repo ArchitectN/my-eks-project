@@ -74,11 +74,10 @@ bookings          → pet + available_day + status (confirmed/cancelled/complete
 ```bash
 docker build \
   --build-arg NEXT_PUBLIC_SUPABASE_URL=<url> \
-  --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=<key> \
+  --build-arg NEXT_PUBLIC_PUBLISHABLE_DEFAULT_KEY=<key> \
   -t animal-daycare:latest .
 
 docker run -p 3000:3000 \
-  -e SUPABASE_SERVICE_ROLE_KEY=<service-key> \
   animal-daycare:latest
 ```
 
